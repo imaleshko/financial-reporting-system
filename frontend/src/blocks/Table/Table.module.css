@@ -1,0 +1,39 @@
+.wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.table th,
+.table td {
+  padding: 12px 16px;
+  border: 1px solid #f0f0f0;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}

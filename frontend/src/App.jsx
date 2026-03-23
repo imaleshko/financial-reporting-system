@@ -1,5 +1,11 @@
+import InputTable from "./page/InputTable.jsx";
+
 const App = () => {
-  return <></>;
+  return (
+    <>
+      <InputTable />
+    </>
+  );
 };
 
 export default App;
