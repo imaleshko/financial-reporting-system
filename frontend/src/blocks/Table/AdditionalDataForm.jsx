@@ -1,6 +1,6 @@
-import styles from "./Table.module.css";
+import styles from "./Forms.module.css";
 
-const Table3 = ({ data, handleChange, tableStructure }) => {
+const AdditionalDataForm = ({ data, handleChange, tableStructure }) => {
   const handleFocus = (e) => {
     e.target.select();
   };
@@ -23,11 +23,12 @@ const Table3 = ({ data, handleChange, tableStructure }) => {
               <td colSpan={2}>
                 <input
                   type="text"
-                  name={row.key}
-                  value={data[row.key]}
+                  name={`additionalData.${row.code}`}
+                  value={data.additionalData[row.code]}
                   onChange={handleChange}
                   className={styles.input}
                   onFocus={handleFocus}
+                  readOnly={row.isCalculated}
                 />
               </td>
             </tr>
@@ -38,4 +39,4 @@ const Table3 = ({ data, handleChange, tableStructure }) => {
   );
 };
 
-export default Table3;
+export default AdditionalDataForm;

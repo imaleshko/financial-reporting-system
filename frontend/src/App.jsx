@@ -1,9 +1,9 @@
-import InputTable from "./page/InputTable.jsx";
+import Home from "./page/Home.jsx";
 
 const App = () => {
   return (
     <>
-      <InputTable />
+      <Home />
     </>
   );
 };

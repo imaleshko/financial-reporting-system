@@ -1,34 +1,28 @@
-const tableStructure3 = [
+export const additionalDataStructure = [
   {
     code: "V17",
     label: "Термін існування підприємства",
-    key: "termOfExistenceOfTheEnterprise",
+    isUsedInIndicators: true,
   },
   {
     code: "V18",
     label: "Градація аналізу прибутків та збитків (0; 5]",
-    key: "gradationOfProfitAndLossAnalysis",
+    isUsedInIndicators: true,
   },
   {
     code: "V19",
     label: "Найбільша сума отриманого і повернутого кредиту",
-    key: "largestAmountOfCreditReceivedAndReturned",
+    isUsedInIndicators: true,
   },
-  {
-    code: "V20",
-    label: "Сума запитуваного кредиту",
-    key: "amountOfRequestedLoan",
-  },
+  { code: "V20", label: "Сума запитуваного кредиту", isUsedInIndicators: true },
   {
     code: "V21",
     label: "Кількість власних коштів в інвестицію",
-    key: "amountOfOwnFundsInTheInvestment",
+    isUsedInIndicators: true,
   },
   {
     code: "V22",
     label: "Вартість власного ліквідного майна",
-    key: "valueOfOwnLiquidAssets",
+    isUsedInIndicators: true,
   },
 ];
-
-export default tableStructure3;

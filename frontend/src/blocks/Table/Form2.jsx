@@ -1,9 +1,10 @@
-import styles from "./Table.module.css";
+import styles from "./Forms.module.css";
 
-const Table2 = ({ data, handleChange, tableStructure }) => {
+const Form2 = ({ data, handleChange, tableStructure }) => {
   const handleFocus = (e) => {
     e.target.select();
   };
+
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>
@@ -21,26 +22,40 @@ const Table2 = ({ data, handleChange, tableStructure }) => {
         <tbody>
           {tableStructure.map((row) => (
             <tr key={row.code}>
-              <td>{row.code}</td>
-              <td>{row.label}</td>
+              <td
+                style={{
+                  fontWeight: row.isUsedInIndicators ? "bold" : "normal",
+                }}
+              >
+                {row.code}
+              </td>
+              <td
+                style={{
+                  fontWeight: row.isUsedInIndicators ? "bold" : "normal",
+                }}
+              >
+                {row.label}
+              </td>
               <td>
                 <input
                   type="text"
-                  name={`${row.key}.forTheReportingPeriod`}
-                  value={data[row.key].forTheReportingPeriod}
+                  name={`form2.${row.code}.current`}
+                  value={data.form2[row.code].current}
                   onChange={handleChange}
                   className={styles.input}
                   onFocus={handleFocus}
+                  readOnly={row.isCalculated}
                 />
               </td>
               <td>
                 <input
                   type="text"
-                  name={`${row.key}.fromTheReportingPeriodOfLastYear`}
-                  value={data[row.key].fromTheReportingPeriodOfLastYear}
+                  name={`form2.${row.code}.previous`}
+                  value={data.form2[row.code].previous}
                   onChange={handleChange}
                   className={styles.input}
                   onFocus={handleFocus}
+                  readOnly={row.isCalculated}
                 />
               </td>
             </tr>
@@ -51,4 +66,4 @@ const Table2 = ({ data, handleChange, tableStructure }) => {
   );
 };
 
-export default Table2;
+export default Form2;
