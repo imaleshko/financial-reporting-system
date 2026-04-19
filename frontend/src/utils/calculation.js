@@ -1,88 +1,94 @@
+import calculateCreditWorthiness from "./calculationCreditWorthiness.js";
+
 const calculateForm1 = (form1) => {
   const updatedForm1 = { ...form1 };
   const periods = ["start", "end"];
 
   periods.forEach((period) => {
-    const val = (code) => Number(updatedForm1[code]?.[period] || 0);
+    const value = (code) => Number(updatedForm1[code]?.[period] || 0);
 
     updatedForm1["1000"] = {
       ...updatedForm1["1000"],
-      [period]: val("1001") - val("1002"),
+      [period]: value("1001") - value("1002"),
     };
     updatedForm1["1010"] = {
       ...updatedForm1["1010"],
-      [period]: val("1011") - val("1012"),
+      [period]: value("1011") - value("1012"),
     };
 
     updatedForm1["1095"] = {
       ...updatedForm1["1095"],
       [period]:
-        val("1000") +
-        val("1005") +
-        val("1010") +
-        val("1015") +
-        val("1020") +
-        val("1030") +
-        val("1035") +
-        val("1040") +
-        val("1045") +
-        val("1090"),
+        value("1000") +
+        value("1005") +
+        value("1010") +
+        value("1015") +
+        value("1020") +
+        value("1030") +
+        value("1035") +
+        value("1040") +
+        value("1045") +
+        value("1090"),
     };
 
     updatedForm1["1195"] = {
       ...updatedForm1["1195"],
       [period]:
-        val("1100") +
-        val("1110") +
-        val("1125") +
-        val("1130") +
-        val("1155") +
-        val("1160") +
-        val("1165") +
-        val("1170") +
-        val("1190"),
+        value("1100") +
+        value("1110") +
+        value("1125") +
+        value("1130") +
+        value("1155") +
+        value("1160") +
+        value("1165") +
+        value("1170") +
+        value("1190"),
     };
 
     updatedForm1["1300"] = {
       ...updatedForm1["1300"],
-      [period]: val("1095") + val("1195") + val("1200"),
+      [period]: value("1095") + value("1195") + value("1200"),
     };
 
     updatedForm1["1495"] = {
       ...updatedForm1["1495"],
       [period]:
-        val("1400") +
-        val("1405") +
-        val("1410") +
-        val("1415") +
-        val("1420") -
-        val("1425") -
-        val("1430"),
+        value("1400") +
+        value("1405") +
+        value("1410") +
+        value("1415") +
+        value("1420") -
+        value("1425") -
+        value("1430"),
     };
 
     updatedForm1["1595"] = {
       ...updatedForm1["1595"],
       [period]:
-        val("1500") + val("1510") + val("1515") + val("1520") + val("1525"),
+        value("1500") +
+        value("1510") +
+        value("1515") +
+        value("1520") +
+        value("1525"),
     };
 
     updatedForm1["1695"] = {
       ...updatedForm1["1695"],
       [period]:
-        val("1600") +
-        val("1610") +
-        val("1615") +
-        val("1620") +
-        val("1625") +
-        val("1630") +
-        val("1660") +
-        val("1665") +
-        val("1690"),
+        value("1600") +
+        value("1610") +
+        value("1615") +
+        value("1620") +
+        value("1625") +
+        value("1630") +
+        value("1660") +
+        value("1665") +
+        value("1690"),
     };
 
     updatedForm1["1900"] = {
       ...updatedForm1["1900"],
-      [period]: val("1495") + val("1595") + val("1695") + val("1700"),
+      [period]: value("1495") + value("1595") + value("1695") + value("1700"),
     };
   });
 
@@ -94,9 +100,9 @@ const calculateForm2 = (form2) => {
   const periods = ["current", "previous"];
 
   periods.forEach((period) => {
-    const val = (code) => Number(updatedForm2[code]?.[period] || 0);
+    const value = (code) => Number(updatedForm2[code]?.[period] || 0);
 
-    const grossProfitLoss = val("2000") - val("2050");
+    const grossProfitLoss = value("2000") - value("2050");
     updatedForm2["2090"] = {
       ...updatedForm2["2090"],
       [period]: grossProfitLoss > 0 ? grossProfitLoss : 0,
@@ -107,7 +113,11 @@ const calculateForm2 = (form2) => {
     };
 
     const operatingFinancialResult =
-      grossProfitLoss + val("2120") - val("2130") - val("2150") - val("2180");
+      grossProfitLoss +
+      value("2120") -
+      value("2130") -
+      value("2150") -
+      value("2180");
     updatedForm2["2190"] = {
       ...updatedForm2["2190"],
       [period]: operatingFinancialResult > 0 ? operatingFinancialResult : 0,
@@ -120,12 +130,12 @@ const calculateForm2 = (form2) => {
 
     const profitBeforeTax =
       operatingFinancialResult +
-      val("2200") +
-      val("2220") +
-      val("2240") -
-      val("2250") -
-      val("2255") -
-      val("2270");
+      value("2200") +
+      value("2220") +
+      value("2240") -
+      value("2250") -
+      value("2255") -
+      value("2270");
     updatedForm2["2290"] = {
       ...updatedForm2["2290"],
       [period]: profitBeforeTax > 0 ? profitBeforeTax : 0,
@@ -135,7 +145,7 @@ const calculateForm2 = (form2) => {
       [period]: profitBeforeTax < 0 ? Math.abs(profitBeforeTax) : 0,
     };
 
-    const netFinancialResult = profitBeforeTax - val("2300") + val("2305");
+    const netFinancialResult = profitBeforeTax - value("2300") + value("2305");
     updatedForm2["2350"] = {
       ...updatedForm2["2350"],
       [period]: netFinancialResult > 0 ? netFinancialResult : 0,
@@ -146,13 +156,17 @@ const calculateForm2 = (form2) => {
     };
 
     const otherIncomeBeforeTax =
-      val("2400") + val("2405") + val("2410") + val("2415") + val("2445");
+      value("2400") +
+      value("2405") +
+      value("2410") +
+      value("2415") +
+      value("2445");
     updatedForm2["2450"] = {
       ...updatedForm2["2450"],
       [period]: otherIncomeBeforeTax,
     };
 
-    const otherIncomeAfterTax = otherIncomeBeforeTax - val("2455");
+    const otherIncomeAfterTax = otherIncomeBeforeTax - value("2455");
     updatedForm2["2460"] = {
       ...updatedForm2["2460"],
       [period]: otherIncomeAfterTax,
@@ -166,7 +180,11 @@ const calculateForm2 = (form2) => {
     updatedForm2["2550"] = {
       ...updatedForm2["2550"],
       [period]:
-        val("2500") + val("2505") + val("2510") + val("2515") + val("2520"),
+        value("2500") +
+        value("2505") +
+        value("2510") +
+        value("2515") +
+        value("2520"),
     };
   });
 
@@ -175,76 +193,76 @@ const calculateForm2 = (form2) => {
 
 const calculateIndicators = (form1, form2, additionalData, indicators) => {
   const updatedIndicators = { ...indicators };
-  const periodsForm1 = ["start", "end"];
-  const periodsForm2 = ["current", "previous"];
 
-  periodsForm1.forEach((period) => {
-    const val = (code) => Number(form1[code]?.[period] || 0);
+  const valueFromForm1 = (code) => Number(form1[code]?.["end"] || 0);
 
-    updatedIndicators["K1"] = {
-      ...updatedIndicators["K1"],
-      [period]:
-        val("1695") === 0 ? 0 : (val("1160") + val("1165")) / val("1695"),
-    };
+  updatedIndicators["K1"] =
+    valueFromForm1("1695") === 0
+      ? 0
+      : (valueFromForm1("1160") + valueFromForm1("1165")) /
+        valueFromForm1("1695");
 
-    updatedIndicators["K2"] = {
-      ...updatedIndicators["K2"],
-      [period]:
-        val("1695") === 0
-          ? 0
-          : (val("1125") + val("1155") + val("1160") + val("1165")) /
-            val("1695"),
-    };
+  updatedIndicators["K2"] =
+    valueFromForm1("1695") === 0
+      ? 0
+      : (valueFromForm1("1125") +
+          valueFromForm1("1155") +
+          valueFromForm1("1160") +
+          valueFromForm1("1165")) /
+        valueFromForm1("1695");
 
-    updatedIndicators["K3"] = {
-      ...updatedIndicators["K3"],
-      [period]: val("1695") === 0 ? 0 : val("1195") / val("1695"),
-    };
+  updatedIndicators["K3"] =
+    valueFromForm1("1695") === 0
+      ? 0
+      : valueFromForm1("1195") / valueFromForm1("1695");
 
-    updatedIndicators["K4"] = {
-      ...updatedIndicators["K4"],
-      [period]:
-        val("1495") === 0
-          ? 0
-          : (val("1525") + val("1595") + val("1695")) / val("1495"),
-    };
+  updatedIndicators["K4"] =
+    valueFromForm1("1495") === 0
+      ? 0
+      : (valueFromForm1("1525") +
+          valueFromForm1("1595") +
+          valueFromForm1("1695")) /
+        valueFromForm1("1495");
 
-    updatedIndicators["K5"] = {
-      ...updatedIndicators["K5"],
-      [period]:
-        val("1495") === 0 ? 0 : (val("1495") - val("1095")) / val("1495"),
-    };
-  });
+  updatedIndicators["K5"] =
+    valueFromForm1("1495") === 0
+      ? 0
+      : (valueFromForm1("1495") - valueFromForm1("1095")) /
+        valueFromForm1("1495");
 
-  periodsForm2.forEach((period) => {
-    const val = (code) => Number(form2[code]?.[period] || 0);
+  const valueFromForm2 = (code) => Number(form2[code]?.["current"] || 0);
 
-    const K6Denominator =
-      val("2500") + val("2505") + val("2510") + val("2515") + val("2520");
-    updatedIndicators["K6"] = {
-      ...updatedIndicators["K6"],
-      [period]: K6Denominator === 0 ? 0 : val("2350") / K6Denominator,
-    };
-  });
+  const K6Denominator =
+    valueFromForm2("2500") +
+    valueFromForm2("2505") +
+    valueFromForm2("2510") +
+    valueFromForm2("2515") +
+    valueFromForm2("2520");
 
-  const val = (code) => Number(additionalData[code] || 0);
-  const v18 = val("V18");
-  const v20 = val("V20");
+  updatedIndicators["K6"] =
+    K6Denominator === 0 ? 0 : valueFromForm2("2350") / K6Denominator;
+
+  const valueFromAdditionalData = (code) => Number(additionalData[code] || 0);
+  const v18 = valueFromAdditionalData("V18");
+  const v20 = valueFromAdditionalData("V20");
   updatedIndicators["K7"] = v18 > 0 && v18 <= 5 ? v18 : 0;
 
-  updatedIndicators["K8"] = v20 === 0 ? 0 : val("V19") / v20;
+  updatedIndicators["K8"] =
+    v20 === 0 ? 0 : valueFromAdditionalData("V19") / v20;
 
-  updatedIndicators["K9"] = val("V17");
+  updatedIndicators["K9"] = valueFromAdditionalData("V17");
 
-  updatedIndicators["K10"] = v20 === 0 ? 0 : val("V21") / v20;
+  updatedIndicators["K10"] =
+    v20 === 0 ? 0 : valueFromAdditionalData("V21") / v20;
 
-  updatedIndicators["K11"] = v20 === 0 ? 0 : val("V22") / v20;
+  updatedIndicators["K11"] =
+    v20 === 0 ? 0 : valueFromAdditionalData("V22") / v20;
 
   return updatedIndicators;
 };
 
 export const calculate = (data) => {
-  const { form1, form2, additionalData, indicators } = data;
+  const { form1, form2, additionalData, indicators, creditWorthiness } = data;
   const updatedForm1 = calculateForm1(form1);
   const updatedForm2 = calculateForm2(form2);
   const updatedIndicators = calculateIndicators(
@@ -253,12 +271,17 @@ export const calculate = (data) => {
     additionalData,
     indicators,
   );
+  const updatedCreditWorthiness = calculateCreditWorthiness(
+    creditWorthiness,
+    updatedIndicators,
+  );
 
   data = {
     ...data,
     form1: updatedForm1,
     form2: updatedForm2,
     indicators: updatedIndicators,
+    creditWorthiness: updatedCreditWorthiness,
   };
 
   return data;

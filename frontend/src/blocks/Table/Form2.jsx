@@ -1,6 +1,6 @@
 import styles from "./Forms.module.css";
 
-const Form2 = ({ data, handleChange, tableStructure }) => {
+const Form2 = ({ form2, handleChange, tableStructure }) => {
   const handleFocus = (e) => {
     e.target.select();
   };
@@ -40,7 +40,7 @@ const Form2 = ({ data, handleChange, tableStructure }) => {
                 <input
                   type="text"
                   name={`form2.${row.code}.current`}
-                  value={data.form2[row.code].current}
+                  value={form2[row.code].current}
                   onChange={handleChange}
                   className={styles.input}
                   onFocus={handleFocus}
@@ -51,7 +51,7 @@ const Form2 = ({ data, handleChange, tableStructure }) => {
                 <input
                   type="text"
                   name={`form2.${row.code}.previous`}
-                  value={data.form2[row.code].previous}
+                  value={form2[row.code].previous}
                   onChange={handleChange}
                   className={styles.input}
                   onFocus={handleFocus}
