@@ -1,9 +1,9 @@
-import Home from "./page/Home.jsx";
+import Page from "./page/Page.jsx";
 
 const App = () => {
   return (
     <>
-      <Home />
+      <Page />
     </>
   );
 };

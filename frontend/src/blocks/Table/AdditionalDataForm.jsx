@@ -1,6 +1,10 @@
 import styles from "./Forms.module.css";
 
-const AdditionalDataForm = ({ data, handleChange, tableStructure }) => {
+const AdditionalDataForm = ({
+  additionalData,
+  handleChange,
+  tableStructure,
+}) => {
   const handleFocus = (e) => {
     e.target.select();
   };
@@ -24,7 +28,7 @@ const AdditionalDataForm = ({ data, handleChange, tableStructure }) => {
                 <input
                   type="text"
                   name={`additionalData.${row.code}`}
-                  value={data.additionalData[row.code]}
+                  value={additionalData[row.code]}
                   onChange={handleChange}
                   className={styles.input}
                   onFocus={handleFocus}

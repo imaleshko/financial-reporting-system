@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetProducts = () => {
+const useGetReports = () => {
   const query = useQuery({
     queryKey: ["reports"],
     queryFn: async () => {
@@ -11,9 +11,10 @@ const useGetProducts = () => {
       return response.data;
     },
   });
+
   return {
     reports: query.data || [],
   };
 };
 
-export default useGetProducts;
+export default useGetReports;

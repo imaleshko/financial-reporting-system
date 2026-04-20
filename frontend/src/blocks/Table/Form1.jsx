@@ -1,6 +1,6 @@
 import styles from "./Forms.module.css";
 
-const Form1 = ({ data, handleChange, tableStructure }) => {
+const Form1 = ({ form1, handleChange, tableStructure }) => {
   const handleFocus = (e) => {
     e.target.select();
   };
@@ -38,7 +38,7 @@ const Form1 = ({ data, handleChange, tableStructure }) => {
                 <input
                   type="text"
                   name={`form1.${row.code}.start`}
-                  value={data.form1[row.code].start}
+                  value={form1[row.code].start}
                   onChange={handleChange}
                   className={styles.input}
                   onFocus={handleFocus}
@@ -49,7 +49,7 @@ const Form1 = ({ data, handleChange, tableStructure }) => {
                 <input
                   type="text"
                   name={`form1.${row.code}.end`}
-                  value={data.form1[row.code].end}
+                  value={form1[row.code].end}
                   onChange={handleChange}
                   className={styles.input}
                   onFocus={handleFocus}

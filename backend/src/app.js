@@ -3,7 +3,6 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import FinancialReport from "./FinancialReportSchema.js";
-import { calculate } from "./calculation.js";
 
 const app = express();
 app.use(cors());
@@ -17,10 +16,9 @@ mongoose
 app.post("/api/financial_report", async (req, res) => {
   try {
     const data = req.body;
-    const updatedData = calculate(data);
-
-    const newReport = new FinancialReport(updatedData);
+    const newReport = new FinancialReport(data);
     await newReport.save();
+
     res.status(201).json({ message: "Звіт збережено", data: newReport });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -30,6 +28,7 @@ app.post("/api/financial_report", async (req, res) => {
 app.get("/api/financial_reports", async (req, res) => {
   try {
     const reports = await FinancialReport.find().sort({ createdAt: -1 });
+
     res.status(200).json(reports);
   } catch (error) {
     res.status(500).json({ message: error.message });
