@@ -116,7 +116,7 @@ const calculateCreditWorthiness = (creditWorthiness, indicators) => {
 
   return {
     ...updatedCreditworthiness,
-    finalScore: Number(finalScore.toFixed(3)),
+    finalScore: finalScore,
   };
 };
 

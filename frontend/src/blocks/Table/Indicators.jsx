@@ -1,7 +1,7 @@
 import styles from "./Forms.module.css";
 
 export const Indicators = ({ indicators, creditWorthiness }) => {
-  const format = (number) => Number(number || 0).toFixed(2);
+  const format = (number) => Number(number || 0).toFixed(3);
 
   const level = (finalScore) => {
     let level;
@@ -56,57 +56,57 @@ export const Indicators = ({ indicators, creditWorthiness }) => {
             <td>K1</td>
             <td>Коефіцієнт миттєвої ліквідності</td>
             <td>{format(indicators.K1)}</td>
-            <td>{creditWorthiness.uK1}</td>
+            <td>{format(creditWorthiness.uK1)}</td>
           </tr>
           <tr>
             <td>K2</td>
             <td>Коефіцієнт поточної ліквідності</td>
             <td>{format(indicators.K2)}</td>
-            <td>{creditWorthiness.uK2}</td>
+            <td>{format(creditWorthiness.uK2)}</td>
           </tr>
           <tr>
             <td>K3</td>
             <td>Коефіцієнт загальної ліквідності</td>
             <td>{format(indicators.K3)}</td>
-            <td>{creditWorthiness.uK3}</td>
+            <td>{format(creditWorthiness.uK3)}</td>
           </tr>
           <tr>
             <td>K4</td>
             <td>Коефіцієнт фінансової незалежності</td>
             <td>{format(indicators.K4)}</td>
-            <td>{creditWorthiness.uK4}</td>
+            <td>{format(creditWorthiness.uK4)}</td>
           </tr>
           <tr>
             <td>K5</td>
             <td>Коефіцієнт маневреності власних коштів</td>
             <td>{format(indicators.K5)}</td>
-            <td>{creditWorthiness.uK5}</td>
+            <td>{format(creditWorthiness.uK5)}</td>
           </tr>
           <tr>
             <td rowSpan={3}>G2</td>
             <td>K6</td>
             <td>Коефіцієнт рентабельності виробництва</td>
             <td>{format(indicators.K6)}</td>
-            <td>{creditWorthiness.uK6}</td>
+            <td>{format(creditWorthiness.uK6)}</td>
           </tr>
           <tr>
             <td>K7</td>
             <td>Коефіцієнт діяльності минулих років</td>
             <td>{indicators.K7}</td>
-            <td>{creditWorthiness.uK7}</td>
+            <td>{format(creditWorthiness.uK7)}</td>
           </tr>
           <tr>
             <td>K8</td>
             <td>Коефіцієнт найбільшої суми раніше повернутого кредиту</td>
             <td>{format(indicators.K8)}</td>
-            <td>{creditWorthiness.uK8}</td>
+            <td>{format(creditWorthiness.uK8)}</td>
           </tr>
           <tr>
             <td rowSpan={3}>G3</td>
             <td>K9</td>
-            <td>Критерій термін існування підприємства</td>
+            <td>Термін існування підприємства</td>
             <td>{indicators.K9}</td>
-            <td>{creditWorthiness.uK9}</td>
+            <td>{format(creditWorthiness.uK9)}</td>
           </tr>
           <tr>
             <td>K10</td>
@@ -115,13 +115,13 @@ export const Indicators = ({ indicators, creditWorthiness }) => {
               проекту
             </td>
             <td>{format(indicators.K10)}</td>
-            <td>{creditWorthiness.uK10}</td>
+            <td>{format(creditWorthiness.uK10)}</td>
           </tr>
           <tr>
             <td>K11</td>
             <td>Коефіцієнт наявності власного ліквідного майна</td>
             <td>{format(indicators.K11)}</td>
-            <td>{creditWorthiness.uK11}</td>
+            <td>{format(creditWorthiness.uK11)}</td>
           </tr>
         </tbody>
       </table>
@@ -136,7 +136,7 @@ export const Indicators = ({ indicators, creditWorthiness }) => {
           </thead>
           <tbody>
             <tr>
-              <td>{creditWorthiness.finalScore}</td>
+              <td>{format(creditWorthiness.finalScore)}</td>
               <td>{level(creditWorthiness.finalScore)}</td>
             </tr>
           </tbody>

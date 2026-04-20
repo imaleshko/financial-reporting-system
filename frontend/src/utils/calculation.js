@@ -243,6 +243,7 @@ const calculateIndicators = (form1, form2, additionalData, indicators) => {
     K6Denominator === 0 ? 0 : valueFromForm2("2350") / K6Denominator;
 
   const valueFromAdditionalData = (code) => Number(additionalData[code] || 0);
+
   const v18 = valueFromAdditionalData("V18");
   const v20 = valueFromAdditionalData("V20");
   updatedIndicators["K7"] = v18 > 0 && v18 <= 5 ? v18 : 0;
